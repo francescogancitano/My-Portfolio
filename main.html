@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Francesco Gancitano">
+    <title>Portfolio - Francesco Gancitano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #f0f0f0;
+            text-align: center;
+        }
+        header {
+            background: #1a1a1a;
+            color: #00b5ff; /* Blu elettrico */
+            padding: 30px;
+            font-size: 36px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #1e1e1e;
+            box-shadow: 0 4px 25px rgba(0, 181, 255, 0.1); /* Soft glowing shadow with blue */
+            border-radius: 10px;
+            text-align: left;
+        }
+        h2 {
+            color: #9b4dff; /* Viola intenso */
+            border-bottom: 3px solid #9b4dff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #333;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #f0f0f0;
+            box-shadow: 0 2px 8px rgba(0, 181, 255, 0.2); /* Soft shadow */
+            transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 181, 255, 0.4);
+            background: #ff7f00; /* Arancione brillante hover */
+        }
+        li img {
+            width: 24px; /* Imposta una larghezza fissa per le icone */
+            height: auto;
+            vertical-align: middle; /* Centra le icone rispetto al testo */
+            margin-right: 10px; /* Distanza tra icona e testo */
+        }
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #00b5ff;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Portfolio - Francesco Gancitano
+    </header>
+    
+    <div class="container">
+        <section>
+            <div class="container">
+                <h2>Chi sono</h2>
+                <p>Ciao! Il mio nome è Francesco Gancitano, e sono un ragazzo appassionato di Informatica.
+                   Sono uno studente del terzo anno del <strong>IIS Verona Trento</strong> con molte esperienze Hardware e Software.
+                   Ho molte esperienze in questo campo con vari linguaggi di programmazione, e molte altre esperienze con diversi sistemi operativi Linux e tanto altro.
+                   In questo sito troverai tutte le mie competenze.
+                </p>
+            </div>
+        </section>
+        
+        <section>
+            <div class="container">
+                <h2>Competenze</h2>
+                <ul>
+                    <li><img src="immagini/html5.png" alt="HTML5 Logo"> HTML</li>
+                    <li><img src="immagini/css3.png" alt="CSS3 Logo"> CSS</li>
+                    <li><img src="immagini/python.png" alt="Python Logo"> Python</li>
+                    <li><img src="immagini/c.png" alt="C Logo"> C</li>
+                    <li><img src="immagini/cpp.png" alt="C++ Logo"> C++</li>
+                    <li><img src="immagini/sql.png" alt="SQL Logo"> SQL</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <div class="container">
+                <h2>Certificazioni</h2>
+                <ul>
+                    <li>LPI</li>
+                    <li>Cambridge B1</li>
+                    <li>IT Essential</li>
+                    <li>Basic Ethical Hacking</li>
+                    <li>Corso Sulla Sicurezza</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2025 - Francesco Gancitano | Tutti i diritti riservati
+    </footer>
+</body>
+</html>
+
