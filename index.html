@@ -1,148 +1,35 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio di Francesco Gancitano</title>
-  <style>
-    /* Reset basilare */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-
-    /* Pulsante menu */
-    #menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: #007acc;
-      border: none;
-      color: #fff;
-      padding: 10px 15px;
-      font-size: 1.2rem;
-      border-radius: 4px;
-      cursor: pointer;
-      z-index: 1001;
-      transition: background 0.3s;
-    }
-    #menu-toggle:hover { background: #005fa3; }
-
-    /* Sidebar */
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100%;
-      background: #f4f4f4;
-      padding-top: 60px;
-      transform: translateX(-260px);
-      transition: transform 0.3s ease;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    #sidebar.open { transform: translateX(0); }
-    #sidebar ul { list-style: none; }
-    #sidebar li { margin: 20px 0; }
-    #sidebar a {
-      text-decoration: none;
-      color: #007acc;
-      font-weight: bold;
-      padding: 8px 20px;
-      display: block;
-      transition: background 0.2s;
-    }
-    #sidebar a:hover { background: rgba(0,122,204,0.1); }
-
-    /* Contenuto principale */
-    main {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      transition: margin-left 0.3s;
-    }
-    main.shifted { margin-left: 260px; }
-
-    section { margin-bottom: 60px; }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      color: #007acc;
-    }
-    /* Liste di competenze e certificazioni */
-    .skills-list, .cert-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 10px;
-    }
-    .skills-list li, .cert-list li {
-      background: #e8f4ff;
-      padding: 10px;
-      border-radius: 4px;
-      text-align: center;
-      font-weight: bold;
-      color: #005fa3;
-    }
-  </style>
-</head>
-<body>
-  <button id="menu-toggle">☰ Menu</button>
-  <nav id="sidebar">
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Ciao! Il mio nome è Francesco Gancitano, e sono un ragazzo appassionato di Informatica.</h1>
+    <p>
+      Sono uno studente del terzo anno del IIS Verona Trento con molte esperienze
+      Hardware e Software. Ho molte esperienze in questo campo con vari linguaggi
+      di programmazione, e molte altre esperienze con diversi sistemi operativi Linux
+      e tanto altro. In questo sito troverai tutte le mie competenze.
+    </p>
+    <p>Competenze:</p>
     <ul>
-      <li><a href="#about">Chi sono</a></li>
-      <li><a href="#skills">Competenze</a></li>
-      <li><a href="#certifications">Certificazioni</a></li>
-      <li><a href="#contact">Contatti</a></li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Python</li>
+      <li>C</li>
+      <li>C++</li>
+      <li>SQL</li>
     </ul>
-  </nav>
-  <main id="content">
-    <section id="about">
-      <h2>Chi sono</h2>
-      <p>Ciao! Il mio nome è <strong>Francesco Gancitano</strong>, e sono un ragazzo appassionato di Informatica. Sono uno studente del terzo anno del IIS Verona Trento con molte esperienze Hardware e Software. Ho molte esperienze in questo campo con vari linguaggi di programmazione, e molte altre esperienze con diversi sistemi operativi Linux e tanto altro. In questo sito troverai tutte le mie competenze.</p>
-    </section>
-
-    <section id="skills">
-      <h2>Competenze</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Python</li>
-        <li>C</li>
-        <li>C++</li>
-        <li>SQL</li>
-      </ul>
-    </section>
-
-    <section id="certifications">
-      <h2>Certificazioni</h2>
-      <ul class="cert-list">
-        <li>LPI</li>
-        <li>Cambridge B1</li>
-        <li>IT Essential</li>
-        <li>Basic Ethical Hacking</li>
-        <li>Corso Sulla Sicurezza</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contatti</h2>
-      <p><strong>Telefono:</strong> +39 347 610 2803</p>
-      <p><strong>Email:</strong> <a href="mailto:francescogancitano411@gmail.com">francescogancitano411@gmail.com</a></p>
-    </section>
-
-    <footer>
-      <p>© 2025 - Francesco Gancitano | Tutti i diritti riservati</p>
-    </footer>
-  </main>
-
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-    toggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      content.classList.toggle('shifted');
-    });
-  </script>
-</body>
+    <p>Certificazioni:</p>
+    <ul>
+      <li>LPI</li>
+      <li>Cambridge B1</li>
+      <li>IT Essential</li>
+      <li>Basic Ethical Hacking</li>
+      <li>Corso Sulla Sicurezza</li>
+    </ul>
+    <p>Telefono: +39 347 610 2803</p>
+    <p>Email: francescogancitano411@gmail.com</p>
+  </body>
 </html>
