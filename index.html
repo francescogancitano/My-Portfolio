@@ -1,279 +1,148 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Francesco Gancitano">
-    <title>Portfolio Di Francesco Gancitano</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2E8B57;
-            --hover-color: #3CB371;
-            --background-dark: #121212;
-            --container-bg: rgba(30, 30, 30, 0.9);
-            --text-light: #f0f0f0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio di Francesco Gancitano</title>
+  <style>
+    /* Reset basilare */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-                        url('immagini/background.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-light);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    /* Pulsante menu */
+    #menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #007acc;
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      font-size: 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: background 0.3s;
+    }
+    #menu-toggle:hover { background: #005fa3; }
 
-        header {
-            background: rgba(26, 26, 26, 0.9);
-            color: var(--primary-color);
-            padding: 30px;
-            font-size: 36px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            backdrop-filter: blur(5px);
-            margin: 0 auto; 
-            max-width: 80%; 
-            width: fit-content;
-            border-radius: 10px;
-        }
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100%;
+      background: #f4f4f4;
+      padding-top: 60px;
+      transform: translateX(-260px);
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    #sidebar.open { transform: translateX(0); }
+    #sidebar ul { list-style: none; }
+    #sidebar li { margin: 20px 0; }
+    #sidebar a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+      padding: 8px 20px;
+      display: block;
+      transition: background 0.2s;
+    }
+    #sidebar a:hover { background: rgba(0,122,204,0.1); }
 
-        .container {
-            max-width: 900px;
-            margin: 50px auto; 
-            padding: 25px;
-            background: var(--container-bg);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
-            border-radius: 10px;
-            position: relative;
-            backdrop-filter: blur(8px);
-        }
+    /* Contenuto principale */
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      transition: margin-left 0.3s;
+    }
+    main.shifted { margin-left: 260px; }
 
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            background: rgba(51, 51, 51, 0.9);
-            margin: 10px 0;
-            padding: 9px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text-light);
-            box-shadow: 0 2px 8px rgba(46, 139, 87, 0.4);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            backdrop-filter: blur(2px);
-        }
-
-        li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
-            background: var(--hover-color);
-        }
-
-        li img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 20px;
-            background: rgba(26, 26, 26, 0.9);
-            color: var(--primary-color);
-            font-size: 16px;
-            text-align: center;
-            width: 100%;
-            backdrop-filter: blur(5px);
-        }
-
-        .competenze ul {
-            text-align: left;
-        }
-
-        .descrizione {
-            display: block;
-            background-color: rgba(68, 68, 68, 0.9);
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-            line-height: 1.4;
-            color: var(--text-light);
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(2px);
-        }
-
-        .descrizione.attiva {
-            opacity: 1;
-            max-height: 200px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 1000px) {
-            .container {
-                width: 90%;
-                margin: 40px auto;
-            }
-            
-            header {
-                max-width: 90%; 
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                font-size: 28px;
-                padding: 20px;
-                margin: 0 auto;
-                max-width: 95%; 
-            }
-
-            .container {
-                margin: 20px auto;
-                padding: 20px;
-            }
-
-            li {
-                font-size: 16px;
-            }
-        }
-
-        li:focus-visible {
-            outline: 2px solid var(--hover-color);
-            outline-offset: 2px;
-        }
-    </style>
+    section { margin-bottom: 60px; }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #007acc;
+    }
+    /* Liste di competenze e certificazioni */
+    .skills-list, .cert-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .skills-list li, .cert-list li {
+      background: #e8f4ff;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+      color: #005fa3;
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        Portfolio Di Francesco Gancitano
-    </header>
-    
-    <div class="container">
-        <section>
-            <h2>Chi sono</h2>
-            <p>Ciao! Il mio nome è Francesco Gancitano, e sono un ragazzo appassionato di Informatica.
-               Sono uno studente del terzo anno del <strong>IIS Verona Trento</strong>
-               con molte esperienze Hardware e Software.
-               Ho molte esperienze in questo campo con vari linguaggi di programmazione, e molte altre esperienze con diversi sistemi operativi Linux e tanto altro.
-               In questo sito troverai tutte le mie competenze.
-            </p>
-        </section>
-        
-        <section class="competenze">
-            <div class="container">
-                <h2>Competenze</h2>
-                <ul>
-                    <li><img src="immagini/html5.png" alt="HTML5 Logo"> HTML</li>
-                    <li><img src="immagini/css3.png" alt="CSS3 Logo"> CSS</li>
-                    <li><img src="immagini/python.png" alt="Python Logo"> Python</li>
-                    <li><img src="immagini/c.png" alt="C Logo"> C</li>
-                    <li><img src="immagini/cpp.png" alt="C++ Logo"> C++</li>
-                    <li><img src="immagini/sql.png" alt="SQL Logo"> SQL</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section>
-            <div class="container">
-                <h2>Certificazioni</h2>
-                <ul id="certificazioni">
-                    <li data-desc="LPI: Linux Professional Institute Certification.">LPI</li>
-                    <li data-desc="Cambridge B1: Certificazione di lingua inglese di livello intermedio.">Cambridge B1</li>
-                    <li data-desc="IT Essential: Certificazione Cisco sulle basi dell'IT e del networking.">IT Essential</li>
-                    <li data-desc="Basic Ethical Hacking: Introduzione alle tecniche di hacking etico.">Basic Ethical Hacking</li>
-                    <li data-desc="Corso Sulla Sicurezza: Approfondimento sulla sicurezza informatica.">Corso Sulla Sicurezza</li>
-                </ul>
-            </div>
-        </section>
+  <button id="menu-toggle">☰ Menu</button>
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#about">Chi sono</a></li>
+      <li><a href="#skills">Competenze</a></li>
+      <li><a href="#certifications">Certificazioni</a></li>
+      <li><a href="#contact">Contatti</a></li>
+    </ul>
+  </nav>
+  <main id="content">
+    <section id="about">
+      <h2>Chi sono</h2>
+      <p>Ciao! Il mio nome è <strong>Francesco Gancitano</strong>, e sono un ragazzo appassionato di Informatica. Sono uno studente del terzo anno del IIS Verona Trento con molte esperienze Hardware e Software. Ho molte esperienze in questo campo con vari linguaggi di programmazione, e molte altre esperienze con diversi sistemi operativi Linux e tanto altro. In questo sito troverai tutte le mie competenze.</p>
+    </section>
 
-        <section>
-            <div class="container">
-                <h2>I miei dati</h2>
-                <ul>
-                    <li>Numero di telefono: <strong>+39 347 610 2803</strong></li>
-                    <li>La mia mail: <strong><a href="mailto:francescogancitano411@gmail.com" style="color: var(--primary-color);">francescogancitano411@gmail.com</a></strong></li>
-                </ul>
-            </div>
-        </section>
-    </div>
-    
+    <section id="skills">
+      <h2>Competenze</h2>
+      <ul class="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Python</li>
+        <li>C</li>
+        <li>C++</li>
+        <li>SQL</li>
+      </ul>
+    </section>
+
+    <section id="certifications">
+      <h2>Certificazioni</h2>
+      <ul class="cert-list">
+        <li>LPI</li>
+        <li>Cambridge B1</li>
+        <li>IT Essential</li>
+        <li>Basic Ethical Hacking</li>
+        <li>Corso Sulla Sicurezza</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contatti</h2>
+      <p><strong>Telefono:</strong> +39 347 610 2803</p>
+      <p><strong>Email:</strong> <a href="mailto:francescogancitano411@gmail.com">francescogancitano411@gmail.com</a></p>
+    </section>
+
     <footer>
-        &copy; 2025 - Francesco Gancitano | Tutti i diritti riservati
+      <p>© 2025 - Francesco Gancitano | Tutti i diritti riservati</p>
     </footer>
+  </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let activeDescription = null;
-
-            const createDescription = (item) => {
-                const descrizione = document.createElement('div');
-                descrizione.className = 'descrizione';
-                descrizione.textContent = item.dataset.desc;
-                item.appendChild(descrizione);
-                return descrizione;
-            };
-
-            const closeAllDescriptions = () => {
-                if (activeDescription) {
-                    activeDescription.classList.remove('attiva');
-                    activeDescription = null;
-                }
-            };
-
-            document.querySelectorAll('#certificazioni li').forEach(item => {
-                const descrizione = createDescription(item);
-
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    
-                    if (activeDescription === descrizione) {
-                        closeAllDescriptions();
-                    } else {
-                        closeAllDescriptions();
-                        descrizione.classList.add('attiva');
-                        activeDescription = descrizione;
-                    }
-                });
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#certificazioni li')) {
-                    closeAllDescriptions();
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeAllDescriptions();
-                }
-            });
-        });
-    </script>
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      content.classList.toggle('shifted');
+    });
+  </script>
 </body>
 </html>
