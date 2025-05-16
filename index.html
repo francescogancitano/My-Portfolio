@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <style>
+      /* Reset e tipografia */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+      }
+      /* Pulsante menù */
+      .menu-btn {
+        position: fixed;
+        top: 1rem; left: 1rem;
+        width: 2rem; height: 2rem;
+        background: #1e1e1e;
+        border-radius: 4px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .menu-btn div {
+        width: 1.2rem; height: 0.15rem;
+        background: #00ff88;
+        position: relative;
+        transition: all 0.3s;
+      }
+      .menu-btn div::before,
+      .menu-btn div::after {
+        content: "";
+        position: absolute;
+        width: 1.2rem; height: 0.15rem;
+        background: #00ff88;
+      }
+      .menu-btn div::before { top: -0.4rem; }
+      .menu-btn div::after  { top: +0.4rem; }
+      /* Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0; left: -250px;
+        width: 250px; height: 100%;
+        background: #1e1e1e;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+        padding-top: 4rem;
+        transition: left 0.3s;
+        z-index: 1000;
+      }
+      .sidebar.open { left: 0; }
+      .sidebar ul { list-style: none; }
+      .sidebar li {
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .sidebar li:hover, .sidebar li.active {
+        background: #00ff88;
+        color: #121212;
+      }
+      /* Main content */
+      .content {
+        margin: auto;
+        width: 100%;
+        max-width: 800px;
+        padding: 2rem;
+      }
+      .card {
+        background-color: #1e1e1e;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2);
+      }
+      h1 { color: #00ff88; font-size: 2rem; }
+      h2 { color: #00ee88; margin-bottom: 1rem; }
+      p { line-height: 1.6; margin-bottom: 1rem; }
+      ul.section-list { list-style: none; padding: 0; }
+      ul.section-list li {
+        background: #2a2a2a;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        display: flex; gap: 0.5rem; align-items: center;
+        transition: background 0.3s, color 0.3s;
+        cursor: pointer;
+      }
+      ul.section-list li:hover {
+        background: #00ff88; color: #121212;
+      }
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Sezioni nascoste di default */
+      .section { display: none; }
+      .section.active { display: block; }
+    </style>
+  </head>
+  <body>
+
+    <!-- Pulsante menù -->
+    <div class="menu-btn" id="menuBtn">
+      <div></div>
+    </div>
+
+    <!-- Sidebar con tab -->
+    <nav class="sidebar" id="sidebar">
+      <ul>
+        <li data-target="home"   class="active">Home</li>
+        <li data-target="skills">Programmazione</li>
+        <li data-target="certs" >Certificazioni</li>
+        <li data-target="info"  >Informazioni personali</li>
+      </ul>
+    </nav>
+
+    <!-- Contenuto principale -->
+    <main class="content">
+      <!-- HOME -->
+      <section id="home" class="section active">
+        <div class="card">
+          <h1>Ciao! Il mio nome è Francesco Gancitano</h1>
+          <p>Sono uno studente del terzo anno del IIS Verona Trento con molte esperienze Hardware e Software. Ho esperienza con vari linguaggi di programmazione e sistemi operativi Linux. Benvenuto nel mio portfolio!</p>
+        </div>
+      </section>
+
+      <!-- COMPETENZE -->
+      <section id="skills" class="section">
+        <div class="card">
+          <h2>Competenze</h2>
+          <ul>
+            <li><img class="icon" src="assets/images/html.png" alt="HTML">  HTML</li>
+            <li><img class="icon" src="assets/images/css.png" alt="CSS">  CSS</li>
+            <li><img class="icon" src="assets/images/python.png" alt="Python">  Python</li>
+            <li><img class="icon" src="assets/images/c.png" alt="C">  C</li>
+            <li><img class="icon" src="assets/images/c++.png" alt="C++">  C++</li>
+            <li><img class="icon" src="assets/images/c#.png" alt="C#">  C#</li>
+            <li><img class="icon" src="assets/images/dart.png" alt="Dart">  Dart</li>
+            <li><img class="icon" src="assets/images/flutter.png" alt="Flutter">  Flutter</li>
+            <li><img class="icon" src="assets/images/dotnet.png" alt="DotNet">  DotNet</li>
+            <li><img class="icon" src="assets/images/sql.png" alt="SQL">  SQL</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CERTIFICAZIONI -->
+      <section id="certs" class="section">
+        <div class="card">
+          <h2>Certificazioni</h2>
+          <ul class="section-list">
+            <li><span class="icon">📜</span>LPI</li>
+            <li><span class="icon">💼</span>IT Essential</li>
+            <li><span class="icon">🔐</span>Corso Sulla Sicurezza</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DATI PERSONALI -->
+      <section id="info" class="section">
+        <div class="card">
+          <h2>Informazioni personali</h2>
+          <ul class="section-list">
+            <li><span class="icon">📞</span>Telefono: +39 347 610 2803</li>
+            <li><span class="icon">✉️</span>Email: francescogancitano411@gmail.com</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // toggla sidebar
+      const menuBtn = document.getElementById('menuBtn');
+      const sidebar = document.getElementById('sidebar');
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+
+      // gestione click sui tab
+      document.querySelectorAll('.sidebar li').forEach(item => {
+        item.addEventListener('click', () => {
+          // chiude la sidebar
+          sidebar.classList.remove('open');
+          // imposta active sul tab
+          document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
+          item.classList.add('active');
+          // mostra la sezione giusta
+          const target = item.getAttribute('data-target');
+          document.querySelectorAll('.section').forEach(sec => {
+            sec.classList.toggle('active', sec.id === target);
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>
+
